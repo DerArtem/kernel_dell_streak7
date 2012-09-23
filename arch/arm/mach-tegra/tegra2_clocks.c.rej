@@ -1,0 +1,12 @@
+--- arch/arm/mach-tegra/tegra2_clocks.c
++++ arch/arm/mach-tegra/tegra2_clocks.c
+@@ -2409,7 +2423,9 @@
+ 	RATE_LIMIT("bsea.sclk",	240000000, 0x04, 0x7, 0x08, 0x0F, 0x10),
+ 	RATE_LIMIT("vde",	240000000, 0x04, 0x7, 0x08, 0x0F, 0x10),
+ 	RATE_LIMIT("3d",	300000000, 0x04, 0x7, 0x08, 0x0F, 0x10),
++#if !defined(CONFIG_ICS)
+ 	RATE_LIMIT("mpe",       300000000, 0x04, 0x7, 0x08, 0x0F, 0x10),
++#endif
+ 
+ 	RATE_LIMIT("host1x",	108000000, 0x0F),
+ 

@@ -1,0 +1,21 @@
+--- include/linux/tegra_overlay.h
++++ include/linux/tegra_overlay.h
+@@ -54,11 +64,18 @@
+ 	__u32	pre_syncpt_val;
+ 	__u32	hfilter;
+ 	__u32	vfilter;
++#if !defined(CONFIG_ICS)
+ 	__u32	tiled;
++#else
++        __u32   do_not_use__tiled; /* compatibility */
++#endif
+ 	__u32	flags;
+ };
+ 
+ #define TEGRA_OVERLAY_FLIP_FLAG_BLEND_REORDER (1 << 0)
++#if defined(CONFIG_ICS)
++#define TEGRA_FB_FLIP_N_WINDOWS                 3
++#endif
+ 
+ struct tegra_overlay_flip_args {
+ 	struct tegra_overlay_windowattr win[TEGRA_FB_FLIP_N_WINDOWS];
