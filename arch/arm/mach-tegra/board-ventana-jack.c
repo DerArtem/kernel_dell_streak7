@@ -62,8 +62,6 @@ int __init ventana_wired_jack_init(void)
 		tegra_gpio_enable(ventana_wr_jack_conf.cdc_irq);
 	if (ventana_wr_jack_conf.dock_det >= 0)
 		tegra_gpio_enable(ventana_wr_jack_conf.dock_det);
-	if(ventana_wr_jack_conf.en_spkr >= 0)
-		tegra_gpio_enable(ventana_wr_jack_conf.en_spkr);
 
 	ret = platform_device_register(&ventana_hs_jack_device);
 	return ret;
