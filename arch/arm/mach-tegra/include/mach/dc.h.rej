@@ -1,0 +1,19 @@
+--- arch/arm/mach-tegra/include/mach/dc.h
++++ arch/arm/mach-tegra/include/mach/dc.h
+@@ -500,10 +523,16 @@
+ #if defined(CONFIG_ICS)
+         unsigned                bandwidth;
+         unsigned                new_bandwidth;
++	struct tegra_dc_lut     lut;
+ #endif
+ };
+ 
+ 
++#if defined(CONFIG_ICS)
++#define TEGRA_WIN_PPFLAG_CP_ENABLE      (1 << 0) /* enable RGB color lut */
++#define TEGRA_WIN_PPFLAG_CP_FBOVERRIDE  (1 << 1) /* override fbdev color lut */
++#endif
++
+ #define TEGRA_WIN_FLAG_ENABLED		(1 << 0)
+ #define TEGRA_WIN_FLAG_BLEND_PREMULT	(1 << 1)
+ #define TEGRA_WIN_FLAG_BLEND_COVERAGE	(1 << 2)

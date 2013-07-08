@@ -1,0 +1,21 @@
+--- mmu_context.h
++++ mmu_context.h
+@@ -36,8 +36,6 @@
+ 	unsigned cpu = smp_processor_id();
+ 
+ 	if (likely(prev != next)) {
+-		/* stop flush ipis for the previous mm */
+-		cpumask_clear_cpu(cpu, mm_cpumask(prev));
+ #ifdef CONFIG_SMP
+ 		percpu_write(cpu_tlbstate.state, TLBSTATE_OK);
+ 		percpu_write(cpu_tlbstate.active_mm, next);
+@@ -47,6 +45,9 @@
+ 		/* Re-load page tables */
+ 		load_cr3(next->pgd);
+ 
++		/* stop flush ipis for the previous mm */
++		cpumask_clear_cpu(cpu, mm_cpumask(prev));
++
+ 		/*
+ 		 * load the LDT, if the LDT is different:
+ 		 */

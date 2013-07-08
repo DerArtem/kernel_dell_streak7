@@ -1,0 +1,11 @@
+--- i8259.c
++++ i8259.c
+@@ -570,6 +570,8 @@
+ 	s->pics[1].elcr_mask = 0xde;
+ 	s->pics[0].pics_state = s;
+ 	s->pics[1].pics_state = s;
++	s->pics[0].isr_ack = 0xff;
++	s->pics[1].isr_ack = 0xff;
+ 
+ 	/*
+ 	 * Initialize PIO device
