@@ -1,24 +1,6 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
+THis is the Luna sensor driver for the Dell Streak 7
+*/
 #include <linux/module.h>
 #include <linux/miscdevice.h>
 #include <linux/uaccess.h>
